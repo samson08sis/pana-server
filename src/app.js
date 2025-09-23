@@ -4,8 +4,12 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const routes = require("./routes");
+const connectDB = require("../config/db");
 
 const app = express();
+
+// Connect to DB
+connectDB();
 
 // Middleware
 app.use(cors());
