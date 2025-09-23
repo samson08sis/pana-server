@@ -17,7 +17,7 @@ exports.updateSection = async (req, res) => {
     const content = await HomeContent.findOne();
     if (!content) return res.status(404).json({ error: "Content not found" });
 
-    content[section] = update;
+    content.set("partners", req.body.partners);
     await content.save();
 
     res
