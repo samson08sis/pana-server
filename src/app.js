@@ -3,7 +3,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const routes = require("./routes"); // Assuming you have an index.js in routes/
+const routes = require("./routes");
 
 const app = express();
 

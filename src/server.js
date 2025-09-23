@@ -1,5 +1,3 @@
-// src/server.js
-
 const app = require("./app");
 const http = require("http");
 const dotenv = require("dotenv");
