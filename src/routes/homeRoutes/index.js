@@ -4,7 +4,7 @@ const router = express.Router();
 const {
   getHomeContent,
   updateSection,
-} = require("../controllers/homeController");
+} = require("../../controllers/homeController");
 
 router.get("/", getHomeContent);
 router.put("/:section", updateSection);
