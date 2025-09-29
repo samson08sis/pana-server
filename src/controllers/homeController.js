@@ -11,19 +11,42 @@ exports.getHomeContent = async (req, res) => {
 
 exports.updateSection = async (req, res) => {
   const { section } = req.params;
-  const update = req.body;
+  const update = req.body[section];
+
+  const allowedSections = [
+    "description",
+    "carouselItems",
+    "expertiseContent",
+    "offerPoints",
+    "partners",
+  ];
+
+  if (!allowedSections.includes(section)) {
+    return res.status(400).json({ error: "Invalid section" });
+  }
 
   try {
     const content = await HomeContent.findOne();
-    if (!content) return res.status(404).json({ error: "Content not found" });
 
-    content.set("partners", req.body.partners);
-    await content.save();
+    if (!content) {
+      const newContent = new HomeContent({ [section]: update });
+      await newContent.save();
 
-    res
-      .status(201)
-      .json({ message: `${section} section updated successfully`, content });
+      return res.status(201).json({
+        message: `${section} section created successfully`,
+        newContent,
+      });
+    } else {
+      content.set(section, update);
+      await content.save();
+
+      res
+        .status(201)
+        .json({ message: `${section} section updated successfully`, content });
+    }
   } catch (err) {
-    res.status(500).json({ error: "Failed to update section" });
+    res
+      .status(500)
+      .json({ error: "Failed to update section: ", message: err.message });
   }
 };
