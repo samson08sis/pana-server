@@ -17,6 +17,9 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // Routes
+app.use("/", (req, res) => {
+  res.json({ Message: "Panacea's Server" });
+});
 app.use("/api", routes);
 
 // 404 handler
