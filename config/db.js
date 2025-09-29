@@ -10,7 +10,6 @@ const connectDB = async () => {
       console.log("❄️  Mongoose already connected");
       return;
     }
-    console.log("URI: ", MONGO_URI);
     const conn = await mongoose.connect(MONGO_URI, {});
 
     console.log(`✅ MongoDB connected: ${conn.connection.host}`);
