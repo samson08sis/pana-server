@@ -5,10 +5,12 @@ const homeRoutes = require("./homeRoutes");
 const imageRoutes = require("./couldinary/imageRoutes");
 
 // Mount each route under its own path
+router.use("/api/home", homeRoutes);
+router.use("/api/cloudinary", imageRoutes);
+
+// Always keep it below the other routes so requests will only match this if found no other matching routes
 router.use("/", (req, res) => {
   res.json({ message: "Panacea's Server" });
 });
-router.use("/api/home", homeRoutes);
-router.use("/api/cloudinary", imageRoutes);
 
 module.exports = router;
