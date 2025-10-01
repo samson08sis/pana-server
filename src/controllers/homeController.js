@@ -9,6 +9,12 @@ exports.getHomeContent = async (req, res) => {
   }
 };
 
+exports.updateAll = async (req, res) => {
+  const update = req.body;
+  const result = await HomeContent.updateOne({}, update, { upsert: true });
+  res.json({ message: "Creation succussful!", result });
+};
+
 exports.updateSection = async (req, res) => {
   const { section } = req.params;
   const update = req.body[section];
@@ -49,4 +55,9 @@ exports.updateSection = async (req, res) => {
       .status(500)
       .json({ error: "Failed to update section: ", message: err.message });
   }
+};
+
+exports.resetHomeContent = async (req, res) => {
+  await HomeContent.deleteMany({});
+  res.json({ message: "Home content reset" });
 };
