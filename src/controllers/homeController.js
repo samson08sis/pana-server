@@ -32,24 +32,17 @@ exports.updateSection = async (req, res) => {
   }
 
   try {
-    const content = await HomeContent.findOne();
+    const result = await HomeContent.updateOne(
+      {},
+      { $set: { [section]: update } },
+      { upsert: true }
+    );
 
-    if (!content) {
-      const newContent = new HomeContent({ [section]: update });
-      await newContent.save();
+    const message = result.upsertedCount
+      ? `${section} section created successfully`
+      : `${section} section updated successfully`;
 
-      return res.status(201).json({
-        message: `${section} section created successfully`,
-        newContent,
-      });
-    } else {
-      content.set(section, update);
-      await content.save();
-
-      res
-        .status(201)
-        .json({ message: `${section} section updated successfully`, content });
-    }
+    res.status(201).json({ message });
   } catch (err) {
     res
       .status(500)
