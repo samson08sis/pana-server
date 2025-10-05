@@ -22,6 +22,7 @@ const ValueSchema = new mongoose.Schema({
   title: String,
   icon: String,
   description: String,
+  isActive: Boolean,
 });
 
 const QuoteSchema = new mongoose.Schema({
