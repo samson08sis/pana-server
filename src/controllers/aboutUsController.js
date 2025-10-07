@@ -2,7 +2,10 @@ const AboutUsContent = require("../models/AboutUsContent");
 
 exports.getContent = async (req, res) => {
   try {
-    const content = await AboutUsContent.findOne().lean();
+    let content = await AboutUsContent.findOne().lean();
+    if (!content) {
+      content = await AboutUsContent.create({});
+    }
     res.json(content);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch about us content" });

@@ -2,7 +2,10 @@ const HomeContent = require("../models/HomeContent");
 
 exports.getHomeContent = async (req, res) => {
   try {
-    const content = await HomeContent.findOne().lean();
+    let content = await HomeContent.findOne().lean();
+    if (!content) {
+      content = await HomeContent.create({});
+    }
     res.json(content);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch home content" });
