@@ -2,10 +2,32 @@ const AboutUsContent = require("../models/AboutUsContent");
 
 exports.getContent = async (req, res) => {
   try {
-    let content = await AboutUsContent.findOne().lean();
-    if (!content) {
-      content = await AboutUsContent.create({});
+    const content = await AboutUsContent.findOne().lean();
+    if (!content) return res.json({});
+
+    // Helper to remove _id from image objects
+    const cleanImage = (img) => {
+      if (!img) return img;
+      const { _id, ...rest } = img;
+      return rest;
+    };
+
+    // Clean mission image
+    if (content.mission?.image) {
+      content.mission.image = cleanImage(content.mission.image);
     }
+
+    // Clean quote image
+    if (content.quote?.image) {
+      content.quote.image = cleanImage(content.quote.image);
+    }
+
+    // Clean team images only (keep team member _id)
+    content.team = content.team.map((member) => ({
+      ...member,
+      image: cleanImage(member.image),
+    }));
+
     res.json(content);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch about us content" });
