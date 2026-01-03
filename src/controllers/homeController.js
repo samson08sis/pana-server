@@ -23,7 +23,7 @@ exports.updateSection = async (req, res) => {
   const update = req.body[section];
 
   const allowedSections = [
-    "description",
+    "slogan",
     "carouselItems",
     "expertiseContent",
     "offerPoints",

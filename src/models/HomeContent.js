@@ -15,7 +15,7 @@ const partnerSchema = new mongoose.Schema({
 });
 
 const homeContentSchema = new mongoose.Schema({
-  description: String,
+  slogan: String,
   carouselItems: [carouselItemSchema],
   expertiseContent: String,
   offerPoints: [String],
