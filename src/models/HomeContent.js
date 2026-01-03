@@ -8,9 +8,10 @@ const carouselItemSchema = new mongoose.Schema({
 });
 
 const partnerSchema = new mongoose.Schema({
-  src: String,
-  alt: String,
-  hint: String,
+  logo: {
+    src: { type: String, default: "" },
+    alt: { type: String, default: "" },
+  },
   link: String,
 });
 
