@@ -40,7 +40,10 @@ const TeamSchema = new mongoose.Schema({
 });
 
 const AboutUsContentSchema = new mongoose.Schema({
-  headTitle: String,
+  header: {
+    title: String,
+    hero: ImageSchema,
+  },
   mission: MissionSchema,
   values: [ValueSchema],
   quote: QuoteSchema,

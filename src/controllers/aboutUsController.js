@@ -44,7 +44,7 @@ exports.updateSection = async (req, res) => {
   const { section } = req.params;
   const update = req.body[section];
 
-  const allowedSections = ["headTitle", "mission", "values", "quote", "team"];
+  const allowedSections = ["header", "mission", "values", "quote", "team"];
 
   if (!allowedSections.includes(section)) {
     return res.status(400).json({ error: "Invalid section" });
