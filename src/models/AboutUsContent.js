@@ -8,7 +8,7 @@ const ImageSchema = new mongoose.Schema({
 const SocialLinkSchema = new mongoose.Schema({
   platform: {
     type: String,
-    enum: ["Twitter", "Instagram", "LinkedIn", "GitHub", "Facebook"],
+    enum: ["Twitter", "LinkedIn", "GitHub", "Facebook", "Website"],
   },
   url: String,
 });
