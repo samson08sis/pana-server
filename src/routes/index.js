@@ -4,7 +4,7 @@ const router = express.Router();
 const homeRoutes = require("./homeRoutes/index.js");
 const aboutUsRoutes = require("./aboutUsRoutes/index.js");
 const contactUsRoutes = require("./contactUsRoutes/index.js");
-const imageRoutes = require("./couldinary/index.js/imageRoutes");
+const imageRoutes = require("./couldinary/imageRoutes.js");
 const newsRoutes = require("./newsRoutes/index.js");
 
 // Mount each route under its own path
