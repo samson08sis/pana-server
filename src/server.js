@@ -6,10 +6,13 @@ dotenv.config();
 
 const PORT = process.env.PORT || 9003;
 
-if (process.env.NODE_ENV !== "production") {
-  const server = http.createServer(app);
+// if (process.env.NODE_ENV !== "production") {
+//   const server = http.createServer(app);
 
-  server.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-  });
-}
+//   server.listen(PORT, () => {
+//     console.log(`🚀 Server running on http://localhost:${PORT}`);
+//   });
+// }
+
+// Use serverless serverless function for deployment
+module.exports = app;
