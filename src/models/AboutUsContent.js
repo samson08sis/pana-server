@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
-
-const ImageSchema = new mongoose.Schema({
-  src: String,
-  alt: String,
-});
+const { ImageSchema, PageHeader } = require("./CommonSchemas");
 
 const SocialLinkSchema = new mongoose.Schema({
   platform: {
@@ -40,10 +36,7 @@ const TeamSchema = new mongoose.Schema({
 });
 
 const AboutUsContentSchema = new mongoose.Schema({
-  header: {
-    title: String,
-    hero: ImageSchema,
-  },
+  header: PageHeader,
   mission: MissionSchema,
   values: [ValueSchema],
   quote: QuoteSchema,

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ImageSchema } = require("./CommonSchemas");
 
 const carouselItemSchema = new mongoose.Schema({
   id: String,
@@ -8,10 +9,7 @@ const carouselItemSchema = new mongoose.Schema({
 });
 
 const partnerSchema = new mongoose.Schema({
-  logo: {
-    src: { type: String, default: "" },
-    alt: { type: String, default: "" },
-  },
+  logo: ImageSchema,
   link: String,
 });
 
