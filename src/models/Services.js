@@ -7,6 +7,7 @@ const ServicesPageContentSchema = new mongoose.Schema({
 
 const ServicesDataSchema = new mongoose.Schema({
   title: String,
+  keyword: String,
   image: ImageSchema,
   description: [String],
   offerings: [String],
