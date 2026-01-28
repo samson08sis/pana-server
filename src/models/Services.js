@@ -9,7 +9,7 @@ const ServicesDataSchema = new mongoose.Schema({
   title: String,
   keyword: String,
   image: ImageSchema,
-  description: [String],
+  description: String,
   offerings: [String],
 });
 
